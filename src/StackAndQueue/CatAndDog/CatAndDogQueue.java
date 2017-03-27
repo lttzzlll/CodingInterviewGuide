@@ -1,4 +1,4 @@
-package CatAndDog;
+package StackAndQueue.CatAndDog;
 
 import java.util.LinkedList;
 import java.util.Queue;
