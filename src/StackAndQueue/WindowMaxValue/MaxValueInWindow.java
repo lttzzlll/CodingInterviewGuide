@@ -1,8 +1,5 @@
 package StackAndQueue.WindowMaxValue;
 
-import StackAndQueue.StackSort.StackSort;
-
-import javax.naming.LinkLoopException;
 import java.util.LinkedList;
 
 /**
@@ -32,19 +29,19 @@ public class MaxValueInWindow {
         if (arr == null || w < 1 || arr.length < w) {
             return null;
         }
-        LinkedList<Integer> qmax = new LinkedList<Integer>();
+        LinkedList<Integer> maxQue = new LinkedList<Integer>();
         int[] res = new int[arr.length - w + 1];
         int index = 0;
         for (int i = 0; i < arr.length; i++) {
-            while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[i]) {
-                qmax.pollLast();
+            while (!maxQue.isEmpty() && arr[maxQue.peekLast()] <= arr[i]) {
+                maxQue.pollLast();
             }
-            qmax.addLast(i);
-            if (qmax.peekFirst() == i - w) {
-                qmax.pollFirst();
+            maxQue.addLast(i);
+            if (maxQue.peekFirst() == i - w) {
+                maxQue.pollFirst();
             }
             if (i >= w - 1) {
-                res[index++] = arr[qmax.peekFirst()];
+                res[index++] = arr[maxQue.peekFirst()];
             }
         }
         return res;
